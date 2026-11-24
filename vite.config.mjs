@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const isGitHubPages = process.env.GITHUB_ACTIONS || process.env.GITHUB_REPOSITORY;
+const repo = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : 'Soulstash-node';
 
 export default defineConfig({
   root: 'spa',
-  base: isGitHubPages ? '/Soulstash/' : '/',
+  base: isGitHubPages ? `/${repo}/` : '/',
   plugins: [react()],
   server: {
     port: 5173,
